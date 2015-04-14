@@ -1,4 +1,4 @@
-coinwidget.com
+Faircoinwidget.com
 ==============
 
 The Faircoin Donation Button
