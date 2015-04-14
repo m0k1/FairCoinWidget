@@ -1,11 +1,10 @@
-coinwidget.com
+getfaircoin.net/widget
 ==============
 
-*The Bitcoin and Litecoin Donation Button*
+*The Faircoin Donation Button*
 
-Visit http://coinwidget.com/ for full documentation, demo, and a link code wizard.
-
-CoinWidget was created by http://scotty.cc/ (hire me for your next project!)
+Visit http://getfaircoin.net/widget for full documentation, demo, and a link code wizard.
+That's a fork for ad Faircoin to CoinWidget, created by http://scotty.cc/ (hire me for your next project!)
 
 Released under the Open Source **MIT License** (see **LICENSE** file for details).
 
@@ -25,7 +24,7 @@ A. Grab the latest version from GitHub: https://github.com/scottycc/coinwidget.c
 
 B. Open **widget/coin.js** and find:
 
-	source: 'http://coinwidget.com/widget/'
+	source: 'http://getfaircoin.net/widget/widget'
 
 C. Change the URL portion of this line to your own server/path.
 
@@ -39,11 +38,11 @@ See the file: **code-sample.html**
 
 The complete list of the options and acceptable values can be found on http://coinwidget.com/.
 
-You can also use the wizard on http://coinwidget.com/ to generate linking codes, just be sure to change: `<script src="http://coinwidget.com/widget/coin.js"></script>` to use your own hosted copy of coin.js.
+You can also use the wizard on http://getfaircoin.net/widget/ to generate linking codes, just be sure to change: `<script src="http://getfaircoin.net/widget/widget/coin.js"></script>` to use your own hosted copy of coin.js.
 
-*Enjoy! -scotty*
+*Enjoy!*
 
 
 ==============
 *If you run into a bug, or a styling issue, or if you need help or have an idea please e-mail:
-coinwidget.com@gmail.com*
+widget@getfaircoin.net
