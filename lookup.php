@@ -75,13 +75,13 @@ THE SOFTWARE.
 	function get_faircoin($address) {
 		$return = array();
 		$data = get_request('https://chain.fair-coin.org/address/'.$address); 
-	if (!empty($data)
-	  && preg_match("/Transactions in: (.*)/", $data, $count)
-	  && preg_match("/Received: (.*) LTC/", $data, $amount)) {
-	  	$return += array(
-			'count' => (int) $count[1],
-			'amount' => (float) $amount[1]
-		);
+		if (!empty($data) 
+		  && strstr($data, 'Transactions in: ') 
+		  && strstr($data, 'Received: ')) {
+		  	$return += array(
+				'count' => (int) parse($data,'Transactions in: ','<br />'),
+				'amount' => (float) parse($data,'Received: ','<br />')
+			);
 	  	return $return;
 	}		
 	}	
