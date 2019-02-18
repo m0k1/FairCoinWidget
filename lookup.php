@@ -1,37 +1,5 @@
 <?php
 
-/** -
-
-Donations welcome:
-	BTC: 122MeuyZpYz4GSHNrF98e6dnQCXZfHJeGS
-	LTC: LY1L6M6yG26b4sRkLv4BbkmHhPn8GR5fFm
-		~ Thank you!
-
-MIT License (MIT)
-
-Copyright (c) 2013 http://coinwidget.com/ 
-Copyright (c) 2013 http://scotty.cc/
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-*/
-
 	header("Content-type: text/javascript");
 	/*
 		you should server side cache this response, especially if your site is active
@@ -74,16 +42,28 @@ THE SOFTWARE.
 	}
 	function get_faircoin($address) {
 		$return = array();
-		$data = get_request('https://chain.fair-coin.org/address/'.$address); 
-		if (!empty($data) 
-		  && strstr($data, 'Transactions in: ') 
-		  && strstr($data, 'Received: ')) {
+		$data = get_request('https://chain.fair.to/address?address='.$address);
+		if (!empty($data))
+		{
+			//I know that this is dirty way of extracting element contents but i was in hurry :)
+			//TODO: Extract elements on nice way.
+			$dom = new DOMDocument();
+			$dom->loadHTML($data);
+			
+			$xpath = new DOMXPath($dom);
+			$balancediv = $xpath->query('//font[@class="stats"]');
+			$balance = strip_tags($dom->saveXML($balancediv->item(1)));
+
+			$tables = $dom->getElementsByTagName('table');
+			$rows = $dom->saveXML($tables->item(0));
+			$transcations = substr_count(strtolower($rows), '<tr>');
+
 		  	$return += array(
-				'count' => (int) parse($data,'Transactions in: ','<br />'),
-				'amount' => (float) parse($data,'Received: ','<br />')
+				'count' => (int) $transcations,
+				'amount' => (float) $balance
 			);
-	  	return $return;
-	}		
+	  		return $return;
+		}		
 	}	
 
 	function get_litecoin($address) {
