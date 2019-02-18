@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>FairCoin Donation Button</title>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="FairCoin Widget is a fork from the open source Coinwidget donation button for websites." />
+	<meta name="keywords" content="faircoin donation button, faircoin donate" />
+	<link rel="stylesheet" type="text/css" href="assets/coinwidget.css" />
+	<script src='https://m0k1.pw/widget/coin.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<script src="assets/coinwidget.js"></script>
+	<link rel="shortcut icon" href="assets/favicon.ico" />
+	<link href="assets/light.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+<header id="header">
+	<section style="height: 110px;"> 		
+		<a href="http://faircoin.world"><img src="assets/logo.png" width="304"></a>
+	</section>
+</header>
+		
+
+<section style="margin-top: 160px;">
+	<article style="display: block;" class="primary">
+		<h1>Add a FairCoin donation button to your webpage and start receiving donations today!</h1>
+		<p>It's simple to use, clean cut, and loaded with customizable features.</p><br>
+		<p><b>Here is what it looks like, go ahead and give it a try:</b><br>
+		<span id="preview_holder"><span id="preview">
+
+				<script>
+				CoinWidgetCom.go({
+
+					/* make sure you update the wallet_address or you will not get your donations */
+					wallet_address: "fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM"
+
+					, currency: "faircoin"
+					, counter: "count"
+					, alignment: "bl"
+					, qrcode: true
+					, auto_show: false
+					, lbl_button: "Donate"
+					, lbl_address: "Donate FairCoin to this Address:"
+					, lbl_count: "donations"
+					, lbl_amount: "FAIR"
+				});
+				</script>
+		</span></span>
+	</article>
+	<article style="display: block;" id="version_note">
+		<h1>Create and customize your FairCoin Donation Widget!</h1>
+	</article>
+	<article style="display: block;" id="get_it">
+		<img style="position:absolute;top:15px;left:20px;" src="assets/icon_75_gear.png">
+		<div style="margin-left:90px;">
+			<h1>Get the coin widget right now:</h1>
+			<p>Use the wizard to quickly create a coin widget button for your 
+site right now, then, paste the code on your website. Or, if you prefer, you can download the source and host 
+it yourself.<br> Also we've made available a link to download a <b>wordpress plugin for use the button</b>, you'll find more information of how to use it at the end of the website</p>
+			<br>
+		</div>
+		
+		<div id="go_buttons">
+			<button onclick="wizard.start();" style="box-shadow:inset 1px 1px 0px #76b5f2;padding:8px;"><img src="assets/favicon.ico">Create a FairCoin Widget now!</button> 
+			<button onclick="window.location='https://github.com/m0k1/FairCoinWidget/archive/master.zip';" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Download the Source Code</button>
+<br><br>
+			<h1>Do you use wordpress?</h1> <br>Information <a href='#wordpress'>here</a>
+<br><br>
+		</div>
+
+</article>
+
+	<article style="display: block;">
+		<img style="position:absolute;top:15px;left:20px;" src="assets/icon_75_settings.png">
+		<div style="margin-left:90px;">
+			<h1>Manual Configuration</h1>
+			<p>Add any of these options to the launcher code to customize this widget.</p>
+		</div>
+		<br><br>
+		<table border="0" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr><th width="100">Option</th>
+			<th width="120">Default Value</th>
+			<th width="120">Acceptable Values</th>
+			<th class="col_desc">Description</th>
+		</tr></thead>
+		<tbody>
+			<tr>
+				<td><b>currency</b></td>
+				<td>faircoin</td>
+				<td>faircoin</td>
+				<td class="col_desc">This widget supports Faircoin.</td>
+			</tr>
+			
+			<tr>
+				<td><b>counter</b></td>
+				<td>count</td>
+				<td>count<br>amount<br>hide</td>
+				<td class="col_desc">Toggle what is shown in the counter next to the main button.<br><div style="padding:0px 5px;margin:5px;background:#FCF9ED;border:1px solid #f3f0ea;"><b>count</b> will show the total number of transactions.<b><br>amount</b> will show the total amount received (in FAIR).<br><b>hide</b> will hide the counter as well as hide the transaction count and total amount received within the window.</div></td>
+			</tr>
+			<tr>
+				<td><b>qrcode</b></td>
+				<td>true</td>
+				<td>true<br>false</td>
+				<td class="col_desc">Set to true if you want to show the QR code generator that appears at the bottom left of the window.<br>Set to false to hide the QR code icon.</td>
+			</tr>
+			<tr>
+				<td><b>auto_show</b></td>
+				<td>false</td>
+				<td>true<br>false</td>
+				<td class="col_desc">Set to true if you want the window to auto appear as soon as the counter finishes loading.</td>
+			</tr>
+			<tr>
+				<td><b>decimals</b></td>
+				<td>4</td>
+				<td>0-10</td>
+				<td class="col_desc">Adjust the number of decimals shown on the amount received statistic.</td>
+			</tr>
+
+			<tr>
+				<td><b>lbl_button</b></td>
+				<td>Donate</td>
+				<td><em>(anything)</em></td>
+				<td class="col_desc">Change the text of the label on the main button.</td>
+			</tr>
+			<tr>
+				<td><b>lbl_address</b></td>
+				<td>My Faircoin Address:</td>
+				<td><em>(anything)</em></td>
+				<td class="col_desc">The text that appears above your faircoin wallet address within the window.</td>
+			</tr>
+			<tr>
+				<td><b>lbl_count</b></td>
+				<td>donations</td>
+				<td><em>(anything)</em></td>
+				<td class="col_desc">The text that appears in the window under the total number of transactions.</td>
+			</tr>
+			<tr>
+				<td><b>lbl_amount</b></td>
+				<td>FAIR</td>
+				<td><em>(anything)</em></td>
+				<td class="col_desc">The text that appears in the window under the total amount of Faircoins received.</td>
+			</tr>
+			<tr>
+				<td><b>onShow</b></td>
+				<td>null</td>
+				<td>function</td>
+				<td class="col_desc">Execute a function when the window opens.</td>
+			</tr>
+			<tr>
+				<td><b>onHide</b></td>
+				<td>null</td>
+				<td>function</td>
+				<td class="col_desc">Execute a function when the window closes.</td>
+			</tr>
+		</tbody>
+	</table>
+	<small style="margin-top:4px;display:block;font-size:10px;"><p>Not sure how to work these options into the code? <a style="color:#666;" href="javascript:;" onclick="$('.example').show();">This example</a> might help.</p></small>
+
+	<div class="example" style="display: none;"><br>
+<pre>&lt;script src="https://m0k1.pw/widget/coin.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	CoinWidgetCom.go({
+		wallet_address		: 'fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM',
+		currency 		: 'faircoin',
+		counter			: 'amount',
+		lbl_button 		: 'TIP ME',	
+		lbl_count		: 'payments',
+		lbl_amount 		: 'coins',
+		lbl_address		: 'Please send FairCoin donations to:',
+		qrcode			: false,
+		decimals		: 0,
+		onShow 			: function(){
+			alert('window opened!');
+		},
+		onHide 			: function(){
+			alert('window closed!');
+		}
+	});
+&lt;/script&gt;
+</pre>
+	<br><small><b>Note:</b> Make sure your last option does not have a trailing comma.</small>
+	</div>
+
+	</article>
+	<article style="display: block;" class="end">
+		<img style="position:absolute;top:15px;left:20px;" src="assets/icon_75_bulb.png">
+		<div style="margin-left:90px;">
+			 <a name='wordpress'><h1>Wordpress Configuration:</h1></a><br>
+			<p>For use the widget on wordpress sites, you'll need to install this wordpress plugin:<br><br>
+			<button onclick="window.open('https://wordpress.org/plugins/faircoin-donation-dutton/');" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Wordpress Faircoin donation button</button>
+<br> <br>
+<p> Once installed, you only need to paste this code anywhere you want to have the button: </p><br>
+<pre> 
+[coinwidget address="HERE YOUR FAIRCOIN ADDRESS"]
+</pre><br><br>
+<pre><code>[coinwidget
+    address=&quot;HERE YOUR FAIRCOIN ADDRESS&quot; currency=&quot;faircoin&quot;
+    counter=&quot;count&quot; alignment=&quot;al&quot; qrcode=&quot;true&quot; auto_show=&quot;true&quot;
+    lbl_button=&quot;Donate faircoin&quot; lbl_address=&quot;My address&quot; lbl_count=&quot;Number of donations&quot;
+    lbl_amount=&quot;FAIR&quot;]</code></pre><br>
+Or simply: <br>
+<pre> 
+<code>[coinwidget address="HERE YOUR FAIRCOIN ADDRESS"]</code>
+</pre><br>
+		
+	
+	</div>
+</article>
+
+
+	<small id="footer">FairCoin donation button, fork from <a target="_blank" href="http://coinwidget.com">Coinwidget.com</a> by Scotty.cc</small>
+
+
+
+</section>
+<img style="display: inline;" src="assets/icon_512_gear.png" class="gear" height="512" width="512">
+
+<div style="display: none;" id="fade"></div>
+<div style="display: none;" id="code">
+	<button style="position:absolute;right:5px;top:5px;font-size:11px;padding:3px 6px;z-index:9;font-weight:bold;" onclick="wizard.code.close();" title="Close Window" class="grey">X</button>
+	
+	<div align="center">
+		<h1>Paste the code below into your website to install your widget:</h1>
+	
+		<textarea onclick="this.select();">&lt;script src="https://m0k1.pw/widget/coin.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+CoinWidgetCom.go({
+	wallet_address: "ENTER-YOUR-FAIRCOIN-WALLET-ADDRESS"
+	, currency: "faircoin"
+	, counter: "count"
+	, alignment: "bl"
+	, qrcode: true
+	, auto_show: false
+	, lbl_button: "Donate"
+	, lbl_address: "My Faircoin Address:"
+	, lbl_count: "donations"
+	, lbl_amount: "FAIR"
+});
+&lt;/script&gt;</textarea>
+		
+		<button style="width:150px;text-align:center;" onclick="wizard.code.close_all();">Done, Close Wizard</button>
+		<button style="width:150px;text-align:center;" class="grey" onclick="wizard.code.close();">Go back and Edit</button><br><br>
+		
+		<a target="_blank" class="ad" href="http://faircoin.world"><img src="assets/mixfaircoop390x90.png" height="90" width="390"></a>
+	</div>
+</div>
+<div style="display: none;" id="wizard">
+	<button style="position:absolute;right:5px;top:5px;font-size:11px;padding:3px 6px;z-index:9;font-weight:bold;" onclick="wizard.close();" title="Close Window" class="grey">X</button>
+	<div style="display: block;" class="loading">
+		<img src="assets/icon_128_wizard.png">
+	</div>
+
+
+	<article>
+		<aside>
+			<b>select an option:</b>
+			<ul>
+				<li data-page="currency" class="sel">Wallet:<b>Faircoin</b></li>
+				<li class="" data-page="counter">Counter:<b>Transaction Count</b></li>
+				<li class="" data-page="text">Text:<b>Default</b></li>
+				<li class="" data-page="alignment">Window Alignment:<b>Below, Left</b></li>
+				<li class="" data-page="qrcode">QR Code:<b>On</b></li>
+				<li class="" data-page="autoshow">Auto Show:<b>Off</b></li>
+			</ul>
+			
+		</aside>
+		<section class="preview">
+			<div style="top: 50px; left: 50px; right: auto; margin-left: 0px;">
+				<script>
+				CoinWidgetCom.go({
+					wallet_address 	: 'fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM'
+					, currency	: 'faircoin'
+					, counter 	: 'count'
+					, alignment 	: 'bl'
+					, lbl_button 	: 'Donate'
+					, lbl_address	: 'My FairCoin Address:'
+					, lbl_count 	: 'donations'
+					, lbl_amount	: 'FAIR'
+					, qrcode 	: true
+				});
+				</script>
+			</div>
+			<button onclick="wizard.get_code();">Finished? Click here to get the code!</button>
+		</section>
+
+		<section class="step">
+			<div data-page="currency">
+				<h2>What cryptocurrency is this button for?</h2>
+				<button class="" data-sidebar="Faircoin" data-currency="faircoin"><img src="assets/icon_16_faircoin.png">Faircoin</button>
+				<br>
+				<h2>Enter your wallet address for this widget:</h2>
+				<input style="width:295px;" name="wallet_address" onclick="$(this).select();" type="text" />
+			</div>
+
+			<div data-page="counter" class="hide">
+				<h2>What should the counter show?</h2>
+				<button class="" data-sidebar="Transaction Count" data-counter="count"><img src="assets/icon_16_counter.png">transaction count</button>
+				<button data-sidebar="Amount Received" data-counter="received" class="grey"><img src="assets/icon_16_counter.png">amount received</button>
+				<button data-sidebar="Hidden" data-counter="hide" class="grey"><img src="assets/icon_16_counter.png">hidden</button>
+				<small style="font-size:11px;display:block;margin-top:8px;border-top:1px solid #ddd;padding-top:8px;">Selecting hidden will hide all visible statistics.</small>
+			</div>			
+			<div style="display: none;" data-page="text" class="hide" data-custom="false">
+				<h2>Customize Text</h2>
+				<label>Button Label</label>		<input value="Donate" name="button" type="text" /><br>
+				<label>Address Label</label>	<input value="My Faircoin Address:" name="address" type="text" /><br>
+				<label>Count Label</label>		<input value="donations" name="count" type="text" /><br>
+				<label>Amount Label</label>		<input value="FAIR" name="amount" type="text" /><br>
+				<a id="text_restore" href="#">Restore Defaults</a>
+			</div>
+			<div data-page="alignment" class="hide">
+				<h2>Window Alignment</h2>
+				<p>How should the window align to the button when opened?</p><br>
+				<div align="center"> 
+					<table id="alignment" border="0" cellpadding="0" cellspacing="1">
+						<tbody><tr>
+							<td data-point="al" class="point"><img src="assets/icon_16_check2.png"></td>
+							<td data-point="ac" class="point"><img src="assets/icon_16_check2.png"></td>
+							<td data-point="ar" class="point"><img src="assets/icon_16_check2.png"></td>
+						</tr>
+						<tr>
+							<td colspan="3" class="mid_point"><span>Below, Left</span></td>
+						</tr>
+						<tr>
+							<td data-point="bl" class="point sel"><img src="assets/icon_16_check2.png"></td>
+							<td data-point="bc" class="point"><img src="assets/icon_16_check2.png"></td>
+							<td data-point="br" class="point"><img src="assets/icon_16_check2.png"></td>
+						</tr>
+					</tbody></table>
+				</div>
+			</div>
+			<div style="display: none;" data-page="qrcode" class="hide">
+				<h2>QR Code</h2>
+				<p>Do you want this widget to show a QR code of your wallet address?</p><br>
+				<button class="" data-sidebar="On" data-qrcode="on"><img src="assets/icon_16_check.png">On</button>
+				<button data-sidebar="Off" data-qrcode="off" class="grey"><img src="assets/icon_16_cancel.png">Off</button>
+			</div>
+			<div style="display: none;" data-page="autoshow" class="hide">
+				<h2>Auto Show</h2>
+				<p>Do you want this widget to automatically show the window after the counter finishes loading?</p><br>
+				<button data-sidebar="On" data-autoshow="on" class="grey"><img src="assets/icon_16_check.png">On</button>
+				<button class="" data-sidebar="Off" data-autoshow="off"><img src="assets/icon_16_cancel.png">Off</button>
+			</div>
+		</section>
+	</article>
+</div>
+</body>
+</html>
