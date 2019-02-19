@@ -3,7 +3,7 @@ FairCoin Donation Widget
 
 *The Faircoin Donation Button*
 
-Visit http://getfaircoin.net/widget for full documentation, demo, and a link code wizard.
+Visit https://m0k1.pw/widget/generator for full documentation, demo, and a link code wizard.
 That's a fork for FairCoin of CoinWidget, created by http://scotty.cc/
 
 Released under the Open Source **MIT License** (see **LICENSE** file for details).
@@ -30,7 +30,7 @@ See the file: **code-sample.html**
 
 The complete list of the options and acceptable values can be found on http://coinwidget.com/.
 
-You can also use the wizard on http://getfaircoin.net/widget/ to generate linking codes, just be sure to change: `<script src="http://m0k1.pw/widget/coin.js"></script>` to use your own hosted copy of coin.js.
+You can also use the wizard on https://m0k1.pw/widget/generator/ to generate linking codes, just be sure to change: `<script src="http://m0k1.pw/widget/coin.js"></script>` to use your own hosted copy of coin.js.
 
 *Enjoy!*
 
