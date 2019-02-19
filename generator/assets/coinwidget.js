@@ -54,10 +54,10 @@ $(function(){
 });
 
 wizard.preview = function(){
-	$button_id = "#wizard > article .FAIRCOINWIDGET_CONTAINER > a";
+	$button_id = "#wizard > article .COINWIDGETCOM_CONTAINER > a";
 	$button = $($button_id);
 	$instance = $button.parent().attr('data-coinwidget-instance');
-	$win = $("#FAIRCOINWIDGET_WINDOW_"+$instance);
+	$win = $("#COINWIDGETCOM_WINDOW_"+$instance);
 	$ext = $button.parent().find('> span');
 
 	$currency = $("#wizard li[data-page='currency'] > b").text().toLowerCase();
@@ -75,8 +75,8 @@ wizard.preview = function(){
 	$win.find('label').html($lbl_address);
 
 	$counters = {count:123,amount:999.999};
-	$win.find('> span.FAIRCOINWIDGET_COUNT').html($counters.count+'<small>'+$lbl_count+'</small>');
-	$win.find('> span.FAIRCOINWIDGET_AMOUNT').html($counters.amount.toFixed(4)+'<small>'+$lbl_amount+'</small>');
+	$win.find('> span.COINWIDGETCOM_COUNT').html($counters.count+'<small>'+$lbl_count+'</small>');
+	$win.find('> span.COINWIDGETCOM_AMOUNT').html($counters.amount.toFixed(4)+'<small>'+$lbl_amount+'</small>');
 	$counter_html = '';
 	$right = 'auto';
 	switch ($counter) {
@@ -97,18 +97,18 @@ wizard.preview = function(){
 		case 'above, right': 	$alignment = 'ar'; $top = !$counter_html?168:207; $left = 'auto'; $right = $nudge_right; break;
 	}
 
-	if (FairCoinWidget.config[$instance]) {
-		FairCoinWidget.config[$instance]['alignment'] = $alignment;
-		$win.removeClass("FAIRCOINWIDGET_WINDOW_BL FAIRCOINWIDGET_WINDOW_BC FAIRCOINWIDGET_WINDOW_BR FAIRCOINWIDGET_WINDOW_AL FAIRCOINWIDGET_WINDOW_AC FAIRCOINWIDGET_WINDOW_AR");
-		$win.addClass("FAIRCOINWIDGET_WINDOW_"+$alignment.toUpperCase());
+	if (CoinWidgetCom.config[$instance]) {
+		CoinWidgetCom.config[$instance]['alignment'] = $alignment;
+		$win.removeClass("COINWIDGETCOM_WINDOW_BL COINWIDGETCOM_WINDOW_BC COINWIDGETCOM_WINDOW_BR COINWIDGETCOM_WINDOW_AL COINWIDGETCOM_WINDOW_AC COINWIDGETCOM_WINDOW_AR");
+		$win.addClass("COINWIDGETCOM_WINDOW_"+$alignment.toUpperCase());
 	}
 	$button.parent().parent().css({'top':$top,'left':$left,'right':$right,'margin-left':$margin_left});
 	
 	$qrcode = ($qrcode == 'on')?true:false;
 	if ($qrcode) {
-		$win.find('.FAIRCOINWIDGET_QRCODE').show();
+		$win.find('.COINWIDGETCOM_QRCODE').show();
 	} else {
-		$win.find('.FAIRCOINWIDGET_QRCODE').hide();
+		$win.find('.COINWIDGETCOM_QRCODE').hide();
 	}
 
 	$auto_show = ($auto_show == 'on')?true:false;
@@ -121,26 +121,27 @@ wizard.preview = function(){
 		$win.find('> span').hide();
 	}
 
-	$button.find('img').attr('src',FairCoinWidget.source+'icon_'+$currency+'.png');
-	$win.find('.COINWIDGET_INPUT_ICON').attr('src',FairCoinWidget.source+'icon_'+$currency+'.png');
+	$button.find('img').attr('src',CoinWidgetCom.source+'icon_'+$currency+'.png');
+	$win.find('.COINWIDGET_INPUT_ICON').attr('src',CoinWidgetCom.source+'icon_'+$currency+'.png');
 
 	$wallet_val = $wallet;
 	if (!$wallet) {
 		switch ($currency) {
 			default:
-			case 'bitcoin': $wallet = FairCoinWidget.config[0].wallet_address; break;
-			case 'litecoin': $wallet = FairCoinWidget.config[1].wallet_address; break;
-			case 'faircoin': $wallet = FairCoinWidget.config[0].wallet_address; break;
+			case 'bitcoin': $wallet = CoinWidgetCom.config[0].wallet_address; break;
+			case 'litecoin': $wallet = CoinWidgetCom.config[1].wallet_address; break;
+			case 'faircoin': $wallet = CoinWidgetCom.config[0].wallet_address; break;
 		}
 	} 
-	if (FairCoinWidget.config[$instance])
-		FairCoinWidget.config[$instance]['wallet_address'] = $wallet;
+	if (CoinWidgetCom.config[$instance])
+		CoinWidgetCom.config[$instance]['wallet_address'] = $wallet;
 	$uri = $currency+':'+$wallet;
 	$win.find('input').val($wallet);
-	$win.find('.FAIRCOINWIDGET_WALLETURI').attr('href',$uri);
+	$win.find('.COINWIDGETCOM_WALLETURI').attr('href',$uri);
 
 	wizard.code.generate({
 		wallet_address: $wallet_val?$wallet_val:"ENTER-YOUR-"+$currency.toUpperCase()+"-WALLET-ADDRESS"
+		, currency: $currency
 		, counter: $counter_val
 		, alignment: $alignment
 		, qrcode: $qrcode
@@ -160,8 +161,9 @@ wizard.code = {
 		$code = [];
 		$code.push('<script src="https://m0k1.pw/widget/coin.js"></script>');
 		$code.push('<script>');
-		$code.push('FairCoinWidget.go({');
+		$code.push('CoinWidgetCom.go({');
 		$code.push("\t"+'wallet_address: "'+wizard.code.strip(options.wallet_address)+'"');
+		$code.push("\t"+', currency: "'+wizard.code.strip(options.currency)+'"');
 		$code.push("\t"+', counter: "'+wizard.code.strip(options.counter)+'"');
 		$code.push("\t"+', alignment: "'+wizard.code.strip(options.alignment)+'"');
 		$code.push("\t"+', qrcode: '+options.qrcode);
@@ -178,7 +180,7 @@ wizard.code = {
 	, close: function(){
 		$("#code").hide('drop',{direction:'down'},function(){
 			$("#wizard").show('drop',{direction:'down'}, function(){
-				$("#wizard .FAIRCOINWIDGET_CONTAINER > a").click();
+				$("#wizard .COINWIDGETCOM_CONTAINER > a").click();
 			});	
 		});	
 	}
@@ -191,7 +193,7 @@ wizard.get_code = function(){
 	$("#wizard").hide('drop',{direction:'down'},function(){
 		$("#code").show('drop',{direction:'down'});	
 	});
-	$(".FAIRCOINWIDGET_WINDOW").remove();
+	$(".COINWIDGETCOM_WINDOW").remove();
 };
 
 wizard.currency = {
@@ -261,15 +263,15 @@ wizard.autoshow = {
 
 wizard.start = function(){
 	wizard.restart();
-	$(".FAIRCOINWIDGET_WINDOW").each(function(i,v){
-		$instance = $(this).attr('id').replace('FAIRCOINWIDGET_WINDOW_','');
-		FairCoinWidget.hide($instance);
+	$(".COINWIDGETCOM_WINDOW").each(function(i,v){
+		$instance = $(this).attr('id').replace('COINWIDGETCOM_WINDOW_','');
+		CoinWidgetCom.hide($instance);
 	});
 	$("#fade").show('slide',{direction:'down'},650,function(){
 		$("#wizard").fadeIn(function(){
 			$("#wizard div.loading").delay(500).hide('drop',{direction:'down'},500,function(){
 				$("#wizard article").fadeIn(300, function(){
-					$("#wizard article .FAIRCOINWIDGET_CONTAINER a").click();
+					$("#wizard article .COINWIDGETCOM_CONTAINER a").click();
 					wizard.preview();
 				});
 			});
@@ -287,7 +289,7 @@ wizard.start = function(){
 };
 
 wizard.close = function(){
-	$(".FAIRCOINWIDGET_WINDOW").remove();
+	$(".COINWIDGETCOM_WINDOW").remove();
 	$("body").css({'overflow':'visible'});
 	$("#COINWIDGET_WINDOW:visible .COINWIDGET_WINDOW_CLOSER").click();
 	$("#header").css({'box-shadow':'0px 10px 20px rgba(0,0,0,0.3)'});

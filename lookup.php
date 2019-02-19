@@ -11,11 +11,18 @@
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				list($instance,$currency,$address) = explode('_',$key);
-				$response = get_faircoin($address);
+				switch ($currency) {
+					case 'bitcoin': 
+						$response = get_bitcoin($address);
+						break;
+					case 'faircoin': 
+						$response = get_faircoin($address);
+						break;
+				}
 				$responses[$instance] = $response;
 			}
 		}
-		echo 'var FAIRCOINWIDGET_DATA = '.json_encode($responses).';';
+		echo 'var COINWIDGETCOM_DATA = '.json_encode($responses).';';
 	}
 
 	function get_bitcoin($address) {
