@@ -1,24 +1,24 @@
-if (typeof CoinWidgetComCounter != 'number')
-var CoinWidgetComCounter = 0;
+if (typeof FairCoinWidgetCounter != 'number')
+var FairCoinWidgetCounter = 0;
 
-if (typeof CoinWidgetCom != 'object')
-var CoinWidgetCom = {
+if (typeof FairCoinWidget != 'object')
+var FairCoinWidget = {
 	source: 'https://m0k1.pw/widget/'
 	, config: []
 	, go :function(config) {
-		config = CoinWidgetCom.validate(config);
-		CoinWidgetCom.config[CoinWidgetComCounter] = config;
-		CoinWidgetCom.loader.jquery();
-		document.write('<span data-coinwidget-instance="'+CoinWidgetComCounter+'" class="COINWIDGETCOM_CONTAINER"></span>');
-		CoinWidgetComCounter++;
+		config = FairCoinWidget.validate(config);
+		FairCoinWidget.config[FairCoinWidgetCounter] = config;
+		FairCoinWidget.loader.jquery();
+		document.write('<span data-coinwidget-instance="'+FairCoinWidgetCounter+'" class="FAIRCOINWIDGET_CONTAINER"></span>');
+		FairCoinWidgetCounter++;
 	}
 	, validate: function(config) {
 		var $accepted = [];
 		$accepted['counters'] = ['count','amount','hide'];
 		$accepted['alignment'] = ['al','ac','ar','bl','bc','br'];
-		if (!config.counter || !CoinWidgetCom.in_array(config.counter,$accepted['counters']))
+		if (!config.counter || !FairCoinWidget.in_array(config.counter,$accepted['counters']))
 			config.counter = 'count';
-		if (!config.alignment || !CoinWidgetCom.in_array(config.alignment,$accepted['alignment']))
+		if (!config.alignment || !FairCoinWidget.in_array(config.alignment,$accepted['alignment']))
 			config.alignment = 'bl';
 		if (typeof config.qrcode != 'boolean')
 			config.qrcode = true;
@@ -40,39 +40,39 @@ var CoinWidgetCom = {
 		return config;
 	}
 	, init: function(){
-		CoinWidgetCom.loader.stylesheet();
+		FairCoinWidget.loader.stylesheet();
 		$(window).resize(function(){
-			CoinWidgetCom.window_resize();
+			FairCoinWidget.window_resize();
 		});
 		setTimeout(function(){
 			/* this delayed start gives the page enough time to 
 			   render multiple widgets before pinging for counts.
 			*/
-			CoinWidgetCom.build();
+			FairCoinWidget.build();
 		},800);		
 	}
 	, build: function(){
 		$containers = $("span[data-coinwidget-instance]");
 		$containers.each(function(i,v){
-			$config = CoinWidgetCom.config[$(this).attr('data-coinwidget-instance')];
-			$counter = $config.counter == 'hide'?'':('<span><img src="'+CoinWidgetCom.source+'icon_loading.gif" width="13" height="13" /></span>');
-			$button = '<a class="COINWIDGETCOM_BUTTON_FAIRCOIN" href="#"><img src="'+CoinWidgetCom.source+'icon_faircoin.png" /><span>'+$config.lbl_button+'</span></a>'+$counter;
+			$config = FairCoinWidget.config[$(this).attr('data-coinwidget-instance')];
+			$counter = $config.counter == 'hide'?'':('<span><img src="'+FairCoinWidget.source+'icon_loading.gif" width="13" height="13" /></span>');
+			$button = '<a class="FAIRCOINWIDGET_BUTTON_FAIRCOIN" href="#"><img src="'+FairCoinWidget.source+'icon_faircoin.png" /><span>'+$config.lbl_button+'</span></a>'+$counter;
 			$(this).html($button);
 			$(this).find('> a').unbind('click').click(function(e){
 				e.preventDefault();
-				CoinWidgetCom.show(this);
+				FairCoinWidget.show(this);
 			});
 		});
-		CoinWidgetCom.counters();
+		FairCoinWidget.counters();
 	}
 	, window_resize: function(){
-		$.each(CoinWidgetCom.config,function(i,v){
-			CoinWidgetCom.window_position(i);
+		$.each(FairCoinWidget.config,function(i,v){
+			FairCoinWidget.window_position(i);
 		});
 	}
 	, window_position: function($instance){
-		$config = CoinWidgetCom.config[$instance];
-		coin_window = "#COINWIDGETCOM_WINDOW_"+$instance;
+		$config = FairCoinWidget.config[$instance];
+		coin_window = "#FAIRCOINWIDGET_WINDOW_"+$instance;
 
 			obj = "span[data-coinwidget-instance='"+$instance+"'] > a";
 			/* 	to make alignment relative to the full width of the container instead 
@@ -115,7 +115,7 @@ var CoinWidgetCom = {
 	, counter: []
 	, counters: function(){
 		$addresses = [];
-		$.each(CoinWidgetCom.config,function(i,v){
+		$.each(FairCoinWidget.config,function(i,v){
 			$instance = i;
 			$config = v;
 			if ($config.counter != 'hide')
@@ -126,14 +126,14 @@ var CoinWidgetCom = {
 			}
 		});
 		if ($addresses.length) {
-			CoinWidgetCom.loader.script({
-				id: 'COINWIDGETCOM_INFO'+Math.random()
-				, source: (CoinWidgetCom.source+'lookup.php?data='+$addresses.join('|'))
+			FairCoinWidget.loader.script({
+				id: 'FAIRCOINWIDGET_INFO'+Math.random()
+				, source: (FairCoinWidget.source+'lookup.php?data='+$addresses.join('|'))
 				, callback: function(){
-					if (typeof COINWIDGETCOM_DATA == 'object') {
-						CoinWidgetCom.counter = COINWIDGETCOM_DATA;
-						$.each(CoinWidgetCom.counter,function(i,v){
-							$config = CoinWidgetCom.config[i];
+					if (typeof FAIRCOINWIDGET_DATA == 'object') {
+						FairCoinWidget.counter = FAIRCOINWIDGET_DATA;
+						$.each(FairCoinWidget.counter,function(i,v){
+							$config = FairCoinWidget.config[i];
 							if (!v.count || v == null) v = {count:0,amount:0};
 							$("span[data-coinwidget-instance='"+i+"']").find('> span').html($config.counter=='count'?v.count:(v.amount.toFixed($config.decimals)+' '+$config.lbl_amount));
 							if ($config.auto_show) {
@@ -142,7 +142,7 @@ var CoinWidgetCom = {
 						});
 					}
 					if ($("span[data-coinwidget-instance] > span img").length > 0) {
-						setTimeout(function(){CoinWidgetCom.counters();},2500);
+						setTimeout(function(){FairCoinWidget.counters();},2500);
 					}
 				}
 			});
@@ -150,9 +150,9 @@ var CoinWidgetCom = {
 	}
 	, show: function(obj) {
 		$instance = $(obj).parent().attr('data-coinwidget-instance');
-		$config = CoinWidgetCom.config[$instance];
-		coin_window = "#COINWIDGETCOM_WINDOW_"+$instance;
-		$(".COINWIDGETCOM_WINDOW").css({'z-index':99999999998});
+		$config = FairCoinWidget.config[$instance];
+		coin_window = "#FAIRCOINWIDGET_WINDOW_"+$instance;
+		$(".FAIRCOINWIDGET_WINDOW").css({'z-index':99999999998});
 		if (!$(coin_window).length) {
 
 			$sel = !navigator.userAgent.match(/iPhone/i)?'onclick="this.select();"':'onclick="prompt(\'Select all and copy:\',\''+$config.wallet_address+'\');"';
@@ -160,58 +160,58 @@ var CoinWidgetCom = {
 			$html = ''
 				  + '<label>'+$config.lbl_address+'</label>'
 				  + '<input type="text" readonly '+$sel+'  value="'+$config.wallet_address+'" />'
-				  + '<a class="COINWIDGETCOM_CREDITS" href="https://faircoin.world/" target="_blank">FairCoin.world</a>'
-  				  + '<a class="COINWIDGETCOM_WALLETURI" href="faircoin:'+$config.wallet_address+'" target="_blank" title="Click here to send this address to your wallet (if your wallet is not compatible you will get an empty page, close the white screen and copy the address by hand)" ><img src="'+CoinWidgetCom.source+'icon_wallet.png" /></a>'
-  				  + '<a class="COINWIDGETCOM_CLOSER" href="javascript:;" onclick="CoinWidgetCom.hide('+$instance+');" title="Close this window">x</a>'
-  				  + '<img class="COINWIDGET_INPUT_ICON" src="'+CoinWidgetCom.source+'icon_faircoin.png" width="16" height="16" title="This is a FairCoin wallet address." />'
+				  + '<a class="FAIRCOINWIDGET_CREDITS" href="https://faircoin.world/" target="_blank">FairCoin.world</a>'
+  				  + '<a class="FAIRCOINWIDGET_WALLETURI" href="faircoin:'+$config.wallet_address+'" target="_blank" title="Click here to send this address to your wallet (if your wallet is not compatible you will get an empty page, close the white screen and copy the address by hand)" ><img src="'+FAIRCOINWIDGET.source+'icon_wallet.png" /></a>'
+  				  + '<a class="FAIRCOINWIDGET_CLOSER" href="javascript:;" onclick="FairCoinWidget.hide('+$instance+');" title="Close this window">x</a>'
+  				  + '<img class="COINWIDGET_INPUT_ICON" src="'+FairCoinWidget.source+'icon_faircoin.png" width="16" height="16" title="This is a FairCoin wallet address." />'
 				  ;
 			if ($config.counter != 'hide') {
-				$html += '<span class="COINWIDGETCOM_COUNT">0<small>'+$config.lbl_count+'</small></span>'
-				  	  + '<span class="COINWIDGETCOM_AMOUNT end">0.00<small>'+$config.lbl_amount+'</small></span>'
+				$html += '<span class="FAIRCOINWIDGET_COUNT">0<small>'+$config.lbl_count+'</small></span>'
+				  	  + '<span class="FAIRCOINWIDGET_AMOUNT end">0.00<small>'+$config.lbl_amount+'</small></span>'
 				  	  ;				  
 			}
 			if ($config.qrcode) {
-				$html += '<img class="COINWIDGETCOM_QRCODE" data-coinwidget-instance="'+$instance+'" src="'+CoinWidgetCom.source+'icon_qrcode.png" width="16" height="16" />'
-				  	   + '<img class="COINWIDGETCOM_QRCODE_LARGE" src="'+CoinWidgetCom.source+'icon_qrcode.png" width="111" height="111" />'
+				$html += '<img class="FAIRCOINWIDGET_QRCODE" data-coinwidget-instance="'+$instance+'" src="'+FairCoinWidget.source+'icon_qrcode.png" width="16" height="16" />'
+				  	   + '<img class="FAIRCOINWIDGET_QRCODE_LARGE" src="'+FairCoinWidget.source+'icon_qrcode.png" width="111" height="111" />'
 				  	   ;
 			}
 			var $div = $('<div></div>');
 			$('body').append($div);
 			$div.attr({
-				'id': 'COINWIDGETCOM_WINDOW_'+$instance
-			}).addClass('COINWIDGETCOM_WINDOW COINWIDGETCOM_WINDOW_FAIRCOIN COINWIDGETCOM_WINDOW_'+$config.alignment.toUpperCase()).html($html).unbind('click').bind('click',function(){
-				$(".COINWIDGETCOM_WINDOW").css({'z-index':99999999998});
+				'id': 'FAIRCOINWIDGET_WINDOW_'+$instance
+			}).addClass('FAIRCOINWIDGET_WINDOW FAIRCOINWIDGET_WINDOW_FAIRCOIN FAIRCOINWIDGET_WINDOW_'+$config.alignment.toUpperCase()).html($html).unbind('click').bind('click',function(){
+				$(".FAIRCOINWIDGET_WINDOW").css({'z-index':99999999998});
 				$(this).css({'z-index':99999999999});
 			});
 			if ($config.qrcode) {
-				$(coin_window).find('.COINWIDGETCOM_QRCODE').bind('mouseenter click',function(){
-					$config = CoinWidgetCom.config[$(this).attr('data-coinwidget-instance')];
-					$lrg = $(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
+				$(coin_window).find('.FAIRCOINWIDGET_QRCODE').bind('mouseenter click',function(){
+					$config = FairCoinWidget.config[$(this).attr('data-coinwidget-instance')];
+					$lrg = $(this).parent().find('.FAIRCOINWIDGET_QRCODE_LARGE');
 					if ($lrg.is(':visible')) {
 						$lrg.hide();
 						return;
 					}
 					$lrg.attr({
-						src: CoinWidgetCom.source +'qr/?address='+$config.wallet_address
+						src: FairCoinWidget.source +'qr/?address='+$config.wallet_address
 					}).show();
 				}).bind('mouseleave',function(){
-					$lrg = $(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
+					$lrg = $(this).parent().find('.FAIRCOINWIDGET_QRCODE_LARGE');
 					$lrg.hide();
 				});
 			}
 		} else {
 			if ($(coin_window).is(':visible')) {
-				CoinWidgetCom.hide($instance);
+				FairCoinWidget.hide($instance);
 				return;
 			}
 		}
-		CoinWidgetCom.window_position($instance);
+		FairCoinWidget.window_position($instance);
 		$(coin_window).show();
 		$pos = $(coin_window).find('input').position();
 		$(coin_window).find('img.COINWIDGET_INPUT_ICON').css({'top':$pos.top+3,'left':$pos.left+3});
-		$(coin_window).find('.COINWIDGETCOM_WALLETURI').css({'top':$pos.top+3,'left':$pos.left+$(coin_window).find('input').outerWidth()+3});
+		$(coin_window).find('.FAIRCOINWIDGET_WALLETURI').css({'top':$pos.top+3,'left':$pos.left+$(coin_window).find('input').outerWidth()+3});
 		if ($config.counter != 'hide') {
-			$counters = CoinWidgetCom.counter[$instance];
+			$counters = FairCoinWidget.counter[$instance];
 			if ($counters == null) {
 				$counters = {
 					count: 0,
@@ -220,15 +220,15 @@ var CoinWidgetCom = {
 			}
 		 	if ($counters.count == null) $counters.count = 0;
 		 	if ($counters.amount == null) $counters.amount = 0;
-			$(coin_window).find('.COINWIDGETCOM_COUNT').html($counters.count+ '<small>'+$config.lbl_count+'</small>');
-			$(coin_window).find('.COINWIDGETCOM_AMOUNT').html($counters.amount.toFixed($config.decimals)+ '<small>'+$config.lbl_amount+'</small>');
+			$(coin_window).find('.FAIRCOINWIDGET_COUNT').html($counters.count+ '<small>'+$config.lbl_count+'</small>');
+			$(coin_window).find('.FAIRCOINWIDGET_AMOUNT').html($counters.amount.toFixed($config.decimals)+ '<small>'+$config.lbl_amount+'</small>');
 		}
 		if (typeof $config.onShow == 'function') 
 			$config.onShow();
 	}
 	, hide: function($instance) {
-		$config = CoinWidgetCom.config[$instance];
-		coin_window = "#COINWIDGETCOM_WINDOW_"+$instance;
+		$config = FairCoinWidget.config[$instance];
+		coin_window = "#FAIRCOINWIDGET_WINDOW_"+$instance;
 		$(coin_window).fadeOut();
 		if (typeof $config.onHide == 'function') {
 			$config.onHide();
@@ -265,31 +265,31 @@ var CoinWidgetCom = {
 		}
 		, stylesheet_loaded: false
 		, stylesheet: function(){
-			if (!CoinWidgetCom.loader.stylesheet_loaded) {
-				CoinWidgetCom.loader.stylesheet_loaded = true;
+			if (!FairCoinWidget.loader.stylesheet_loaded) {
+				FairCoinWidget.loader.stylesheet_loaded = true;
 				var $link = $('<link/>');
 				$("head").append($link);
 				$link.attr({
-					id 		: 'COINWIDGETCOM_STYLESHEET'
+					id 		: 'FAIRCOINWIDGET_STYLESHEET'
 					, rel 	: 'stylesheet'
 					, type 	: 'text/css'
-					, href 	: CoinWidgetCom.source+'coin.css'
+					, href 	: FairCoinWidget.source+'coin.css'
 				});
 			}
 		}
 		, jquery: function(){
-			if (!window.jQuery && !CoinWidgetCom.loader.loading_jquery) {
+			if (!window.jQuery && !FairCoinWidget.loader.loading_jquery) {
 				$prefix = window.location.protocol=='file:'?'https:':'';
-				CoinWidgetCom.loader.script({
-					id			: 'COINWIDGETCOM_JQUERY'
+				FairCoinWidget.loader.script({
+					id			: 'FAIRCOINWIDGET_JQUERY'
 					, source 	: $prefix + '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
 					, callback  : function(){
-						CoinWidgetCom.init();
+						FairCoinWidget.init();
 					}
 				});
 				return;
 			}
-			CoinWidgetCom.init();
+			FairCoinWidget.init();
 		}
 	}
 };
