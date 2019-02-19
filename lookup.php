@@ -15,9 +15,6 @@
 					case 'bitcoin': 
 						$response = get_bitcoin($address);
 						break;
-					case 'litecoin': 
-						$response = get_litecoin($address);
-						break;
 					case 'faircoin': 
 						$response = get_faircoin($address);
 						break;
@@ -40,6 +37,7 @@
 			return $return;
 		}
 	}
+
 	function get_faircoin($address) {
 		$return = array();
 		$data = get_request('https://chain.fair.to/address?address='.$address);
@@ -65,20 +63,6 @@
 	  		return $return;
 		}		
 	}	
-
-	function get_litecoin($address) {
-		$return = array();
-		$data = get_request('http://explorer.litecoin.net/address/'.$address);
-		if (!empty($data) 
-		  && strstr($data, 'Transactions in: ') 
-		  && strstr($data, 'Received: ')) {
-		  	$return += array(
-				'count' => (int) parse($data,'Transactions in: ','<br />'),
-				'amount' => (float) parse($data,'Received: ','<br />')
-			);
-		  	return $return;
-		}
-	}
 
 	function get_request($url,$timeout=4) {
 		if (function_exists('curl_version')) {

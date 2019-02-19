@@ -39,7 +39,6 @@
 					/* make sure you update the wallet_address or you will not get your donations */
 					wallet_address: "fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM"
 
-					, currency: "faircoin"
 					, counter: "count"
 					, alignment: "bl"
 					, qrcode: true
@@ -90,12 +89,6 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 			<th class="col_desc">Description</th>
 		</tr></thead>
 		<tbody>
-			<tr>
-				<td><b>currency</b></td>
-				<td>faircoin</td>
-				<td>faircoin</td>
-				<td class="col_desc">This widget supports Faircoin.</td>
-			</tr>
 			
 			<tr>
 				<td><b>counter</b></td>
@@ -130,9 +123,9 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 			</tr>
 			<tr>
 				<td><b>lbl_address</b></td>
-				<td>My Faircoin Address:</td>
+				<td>My FairCoin Address:</td>
 				<td><em>(anything)</em></td>
-				<td class="col_desc">The text that appears above your faircoin wallet address within the window.</td>
+				<td class="col_desc">The text that appears above your FairCoin wallet address within the window.</td>
 			</tr>
 			<tr>
 				<td><b>lbl_count</b></td>
@@ -144,7 +137,7 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 				<td><b>lbl_amount</b></td>
 				<td>FAIR</td>
 				<td><em>(anything)</em></td>
-				<td class="col_desc">The text that appears in the window under the total amount of Faircoins received.</td>
+				<td class="col_desc">The text that appears in the window under the total amount of FairCoins received.</td>
 			</tr>
 			<tr>
 				<td><b>onShow</b></td>
@@ -167,7 +160,7 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 &lt;script&gt;
 	CoinWidgetCom.go({
 		wallet_address		: 'fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM',
-		currency 		: 'faircoin',
+
 		counter			: 'amount',
 		lbl_button 		: 'TIP ME',	
 		lbl_count		: 'payments',
@@ -193,16 +186,16 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 		<div style="margin-left:90px;">
 			 <a name='wordpress'><h1>Wordpress Configuration:</h1></a><br>
 			<p>For use the widget on wordpress sites, you'll need to install this wordpress plugin:<br><br>
-			<button onclick="window.open('https://wordpress.org/plugins/faircoin-donation-dutton/');" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Wordpress Faircoin donation button</button>
+			<button onclick="window.open('https://wordpress.org/plugins/faircoin-donation-dutton/');" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Wordpress FairCoin donation button</button>
 <br> <br>
 <p> Once installed, you only need to paste this code anywhere you want to have the button: </p><br>
 <pre> 
 [coinwidget address="HERE YOUR FAIRCOIN ADDRESS"]
 </pre><br><br>
 <pre><code>[coinwidget
-    address=&quot;HERE YOUR FAIRCOIN ADDRESS&quot; currency=&quot;faircoin&quot;
+    address=&quot;HERE YOUR FAIRCOIN ADDRESS&quot;
     counter=&quot;count&quot; alignment=&quot;al&quot; qrcode=&quot;true&quot; auto_show=&quot;true&quot;
-    lbl_button=&quot;Donate faircoin&quot; lbl_address=&quot;My address&quot; lbl_count=&quot;Number of donations&quot;
+    lbl_button=&quot;Donate FairCoin&quot; lbl_address=&quot;My address&quot; lbl_count=&quot;Number of donations&quot;
     lbl_amount=&quot;FAIR&quot;]</code></pre><br>
 Or simply: <br>
 <pre> 
@@ -232,13 +225,12 @@ Or simply: <br>
 &lt;script&gt;
 CoinWidgetCom.go({
 	wallet_address: "ENTER-YOUR-FAIRCOIN-WALLET-ADDRESS"
-	, currency: "faircoin"
 	, counter: "count"
 	, alignment: "bl"
 	, qrcode: true
 	, auto_show: false
 	, lbl_button: "Donate"
-	, lbl_address: "My Faircoin Address:"
+	, lbl_address: "My FairCoin Address:"
 	, lbl_count: "donations"
 	, lbl_amount: "FAIR"
 });
@@ -261,7 +253,7 @@ CoinWidgetCom.go({
 		<aside>
 			<b>select an option:</b>
 			<ul>
-				<li data-page="currency" class="sel">Wallet:<b>Faircoin</b></li>
+				<li data-page="currency" class="sel">Wallet:<b>FairCoin</b></li>
 				<li class="" data-page="counter">Counter:<b>Transaction Count</b></li>
 				<li class="" data-page="text">Text:<b>Default</b></li>
 				<li class="" data-page="alignment">Window Alignment:<b>Below, Left</b></li>
@@ -275,7 +267,6 @@ CoinWidgetCom.go({
 				<script>
 				CoinWidgetCom.go({
 					wallet_address 	: 'fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM'
-					, currency	: 'faircoin'
 					, counter 	: 'count'
 					, alignment 	: 'bl'
 					, lbl_button 	: 'Donate'
@@ -291,8 +282,8 @@ CoinWidgetCom.go({
 
 		<section class="step">
 			<div data-page="currency">
-				<h2>What cryptocurrency is this button for?</h2>
-				<button class="" data-sidebar="Faircoin" data-currency="faircoin"><img src="assets/icon_16_faircoin.png">Faircoin</button>
+				<h2>You are generating button for:</h2>
+				<button class="" data-sidebar="Faircoin" data-currency="faircoin"><img src="assets/icon_16_faircoin.png">FairCoin</button>
 				<br>
 				<h2>Enter your wallet address for this widget:</h2>
 				<input style="width:295px;" name="wallet_address" onclick="$(this).select();" type="text" />
@@ -308,7 +299,7 @@ CoinWidgetCom.go({
 			<div style="display: none;" data-page="text" class="hide" data-custom="false">
 				<h2>Customize Text</h2>
 				<label>Button Label</label>		<input value="Donate" name="button" type="text" /><br>
-				<label>Address Label</label>	<input value="My Faircoin Address:" name="address" type="text" /><br>
+				<label>Address Label</label>	<input value="My FairCoin Address:" name="address" type="text" /><br>
 				<label>Count Label</label>		<input value="donations" name="count" type="text" /><br>
 				<label>Amount Label</label>		<input value="FAIR" name="amount" type="text" /><br>
 				<a id="text_restore" href="#">Restore Defaults</a>
