@@ -9,33 +9,14 @@
 		$data = explode("|", $data);
 		$responses = array();
 		if (!empty($data)) {
-			foreach ($data as $key) {
-				list($instance,$currency,$address) = explode('_',$key);
-				switch ($currency) {
-					case 'bitcoin': 
-						$response = get_bitcoin($address);
-						break;
-					case 'faircoin': 
-						$response = get_faircoin($address);
-						break;
-				}
+			foreach ($data as $key) 
+			{
+				list($instance,$address) = explode('_',$key);
+				$response = get_faircoin($address);
 				$responses[$instance] = $response;
 			}
 		}
 		echo 'var COINWIDGETCOM_DATA = '.json_encode($responses).';';
-	}
-
-	function get_bitcoin($address) {
-		$return = array();
-		$data = get_request('http://blockchain.info/address/'.$address.'?format=json&limit=0');
-		if (!empty($data)) {
-			$data = json_decode($data);
-			$return += array(
-				'count' => (int) $data->n_tx,
-				'amount' => (float) $data->total_received/100000000
-			);
-			return $return;
-		}
 	}
 
 	function get_faircoin($address) {

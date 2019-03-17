@@ -35,15 +35,13 @@ var wizard = {
 		wizard.restart();
 		wizard.sidebar.init();
 		wizard.alignment.init();
-		wizard.currency.init();
 		wizard.counter.init();
 		wizard.text.init();
 		wizard.qrcode.init();
 		wizard.autoshow.init();
 	}
 	, defaults: {
-		  currency:  	'faircoin'
-		, counter: 	'count'
+		 counter: 	'count'
 		, alignment: 	'bl'
 		, qrcode: 	true
 	}
@@ -60,7 +58,6 @@ wizard.preview = function(){
 	$win = $("#COINWIDGETCOM_WINDOW_"+$instance);
 	$ext = $button.parent().find('> span');
 
-	$currency = $("#wizard li[data-page='currency'] > b").text().toLowerCase();
 	$counter = $("#wizard li[data-page='counter'] > b").text().toLowerCase();
 	$alignment = $("#wizard li[data-page='alignment'] > b").text().toLowerCase();
 	$qrcode = $("#wizard li[data-page='qrcode'] > b").text().toLowerCase();
@@ -121,27 +118,22 @@ wizard.preview = function(){
 		$win.find('> span').hide();
 	}
 
-	$button.find('img').attr('src',CoinWidgetCom.source+'icon_'+$currency+'.png');
-	$win.find('.COINWIDGET_INPUT_ICON').attr('src',CoinWidgetCom.source+'icon_'+$currency+'.png');
+	$button.find('img').attr('src',CoinWidgetCom.source+'icon_faircoin.png');
+	$win.find('.COINWIDGET_INPUT_ICON').attr('src',CoinWidgetCom.source+'icon_faircoin.png');
 
 	$wallet_val = $wallet;
-	if (!$wallet) {
-		switch ($currency) {
-			default:
-			case 'bitcoin': $wallet = CoinWidgetCom.config[0].wallet_address; break;
-			case 'litecoin': $wallet = CoinWidgetCom.config[1].wallet_address; break;
-			case 'faircoin': $wallet = CoinWidgetCom.config[0].wallet_address; break;
-		}
+	if (!$wallet)
+	{
+		$wallet = CoinWidgetCom.config[0].wallet_address;
 	} 
 	if (CoinWidgetCom.config[$instance])
 		CoinWidgetCom.config[$instance]['wallet_address'] = $wallet;
-	$uri = $currency+':'+$wallet;
+	$uri = ':'+$wallet;
 	$win.find('input').val($wallet);
 	$win.find('.COINWIDGETCOM_WALLETURI').attr('href',$uri);
 
 	wizard.code.generate({
-		wallet_address: $wallet_val?$wallet_val:"ENTER-YOUR-"+$currency.toUpperCase()+"-WALLET-ADDRESS"
-		, currency: $currency
+		wallet_address: $wallet_val?$wallet_val:"ENTER-YOUR-FAIRCOIN-WALLET-ADDRESS"
 		, counter: $counter_val
 		, alignment: $alignment
 		, qrcode: $qrcode
@@ -159,11 +151,10 @@ wizard.code = {
 	}
 	, generate: function(options){
 		$code = [];
-		$code.push('<script src="https://m0k1.pw/widget/coin.js"></script>');
+		$code.push('<script src="https://widget.m0k1.pw/coin.js"></script>');
 		$code.push('<script>');
 		$code.push('CoinWidgetCom.go({');
 		$code.push("\t"+'wallet_address: "'+wizard.code.strip(options.wallet_address)+'"');
-		$code.push("\t"+', currency: "'+wizard.code.strip(options.currency)+'"');
 		$code.push("\t"+', counter: "'+wizard.code.strip(options.counter)+'"');
 		$code.push("\t"+', alignment: "'+wizard.code.strip(options.alignment)+'"');
 		$code.push("\t"+', qrcode: '+options.qrcode);
@@ -196,24 +187,7 @@ wizard.get_code = function(){
 	$(".COINWIDGETCOM_WINDOW").remove();
 };
 
-wizard.currency = {
-	buttons: "#wizard div[data-page='currency'] button[data-currency]"
-	, init: function(){
-		$(wizard.currency.buttons).unbind('click').on('click',function(){
-			wizard.currency.select(this);
-		});
-	}
-	, select: function(obj) {
-		$(wizard.currency.buttons).addClass('grey');
-		$(obj).removeClass('grey');
-		$("li[data-page='currency'] > b").html($(obj).attr('data-sidebar'));
-		$coin = $(obj).attr('data-sidebar').toLowerCase();
-		$txt = wizard.text.defaults[$coin];
-		wizard.text.set($txt);
-		wizard.preview();
-		$("#wizard div[data-page='currency'] input[type='text']").val('');
-	}
-};
+
 
 wizard.counter = {
 	buttons: "#wizard div[data-page='counter'] button[data-counter]"

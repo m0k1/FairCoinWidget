@@ -3,7 +3,7 @@ var CoinWidgetComCounter = 0;
 
 if (typeof CoinWidgetCom != 'object')
 var CoinWidgetCom = {
-	source: 'https://m0k1.pw/widget/'
+	source: 'https://widget.m0k1.pw/'
 	, config: []
 	, go :function(config) {
 		config = CoinWidgetCom.validate(config);
@@ -119,7 +119,7 @@ var CoinWidgetCom = {
 			$instance = i;
 			$config = v;
 			if ($config.counter != 'hide')
-				$addresses.push($instance+'_faircoin_'+$config.wallet_address);
+				$addresses.push($instance+$config.wallet_address);
 			else {
 				if ($config.auto_show) 
 					$("span[data-coinwidget-instance='"+i+"']").find('> a').click();
