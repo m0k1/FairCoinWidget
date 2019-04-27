@@ -1,14 +1,11 @@
 FairCoin Donation Widget
 ==============
-
-*The Faircoin Donation Button*
-
-Visit https://widget.m0k1.pw for full documentation, demo, and a link code wizard.
-That's a fork for FairCoin of CoinWidget, created by http://scotty.cc/
+  
+Visit https://widget.m0k1.pw for full documentation, demo, and a code generator wizard.  
+This is a fork for FairCoin of CoinWidget, created by http://scotty.cc/  
 
 Released under the Open Source **MIT License** (see **LICENSE** file for details).
-
-Please help keep this project alive! Tell someone about this widget! 
+Please help keep this project alive!  Tell someone about this widget! 
 
 Installation
 ==============
@@ -19,9 +16,6 @@ B. Open **FairCoinWidget/coin.js** and find:
 	source: 'https://widget.m0k1.pw/'
 
 C. Change the URL portion of this line to your own server/path.
-
-D. (optional) Open **lookup.php** and consider implementing a caching method based on your own style and preference.
-
 
 Example Code
 ==============
