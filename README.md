@@ -5,7 +5,8 @@ Visit https://widget.m0k1.pw for full documentation, demo, and a code generator 
 This is a fork for FairCoin of CoinWidget, created by http://scotty.cc/  
   
 Released under the Open Source **MIT License** (see **LICENSE** file for details).  
-Please help keep this project alive!  Tell someone about this widget!  
+Please help keep this project alive!  
+Tell someone about this widget!  
   
 Installation  
 ==============  
