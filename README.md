@@ -1,6 +1,7 @@
 FairCoin Donation Widget
 ==============
-  
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/m0k1/FairCoinWidget)  
+
 Visit https://widget.m0k1.pw for full documentation, demo, and a code generator wizard.  
 This is a fork for FairCoin of CoinWidget, created by http://scotty.cc/  
   
