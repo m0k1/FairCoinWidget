@@ -9,7 +9,7 @@ Please help keep this project alive!  Tell someone about this widget!
 
 Installation
 ==============
-A. Grab the latest version from GitHub: https://github.com/m0k1/FairCoinWidget
+A. Grab the latest version from GitHub: https://github.com/m0k1/FairCoinWidget/releases
 
 B. Open **FairCoinWidget/coin.js** and find:
 
@@ -24,10 +24,9 @@ See the file: **code-sample.html**
 
 The complete list of the options and acceptable values can be found on https://widget.m0k1.pw/#config.
 
-You can also use the wizard on https://widget.m0k1.pw/ to generate linking codes, just be sure to change: `<script src="http://widget.m0k1.pw/coin.js"></script>` to use your own hosted copy of coin.js.
+You can also use the wizard on https://widget.m0k1.pw/ to generate widget codes !
 
 *Enjoy!*
-
 
 ==============
 *If you run into a bug, or a styling issue, or if you need help or have an idea please open issue !
