@@ -8,7 +8,7 @@
 	<meta name="description" content="FairCoin Widget is a fork from the open source Coinwidget donation button for websites." />
 	<meta name="keywords" content="faircoin donation button, faircoin donate" />
 	<link rel="stylesheet" type="text/css" href="assets/coinwidget.css" />
-	<script src="https://widget.m0k1.pw/coin.js"></script>
+	<script src="https://widget.m0k1.pw/faircoin.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<script src="assets/coinwidget.js"></script>
@@ -20,11 +20,11 @@
 
 
 <header id="header">
-	<section style="height: 110px;"> 		
-		<a href="http://faircoin.world"><img src="assets/logo.png" width="304"></a>
+	<section style="height: 110px;">
+		<a href="http://widget.m0k1.pw"><img src="assets/logo.png" width="304"></a>
 	</section>
 </header>
-		
+
 
 <section style="margin-top: 160px;">
 	<article style="display: block;" class="primary">
@@ -58,15 +58,15 @@
 		<img style="position:absolute;top:15px;left:20px;" src="assets/icon_75_gear.png">
 		<div style="margin-left:90px;">
 			<h1>Get the coin widget right now:</h1>
-			<p>Use the wizard to quickly create a coin widget button for your 
-site right now, then, paste the code on your website. Or, if you prefer, you can download the source and host 
+			<p>Use the wizard to quickly create a coin widget button for your
+site right now, then, paste the code on your website. Or, if you prefer, you can download the source and host
 it yourself.<br> Also we've made available a link to download a <b>wordpress plugin for use the button</b>, you'll find more information of how to use it at the end of the website</p>
 			<br>
 		</div>
-		
+
 		<div id="go_buttons">
-			<button onclick="wizard.start();" style="box-shadow:inset 1px 1px 0px #76b5f2;padding:8px;"><img src="assets/favicon.ico">Create a FairCoin Widget now!</button> 
-			<button onclick="window.location='https://github.com/m0k1/FairCoinWidget/archive/master.zip';" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Download the Source Code</button>
+			<button onclick="wizard.start();" style="box-shadow:inset 1px 1px 0px #76b5f2;padding:8px;"><img src="assets/favicon.ico">Create a FairCoin Widget now!</button>
+			<button onclick="window.location='https://github.com/m0k1/FairCoinWidget/releases';" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Download the Source Code</button>
 <br><br>
 			<h1>Do you use wordpress?</h1> <br>Information <a href='#wordpress'>here</a>
 <br><br>
@@ -89,7 +89,7 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 			<th class="col_desc">Description</th>
 		</tr></thead>
 		<tbody>
-			
+
 			<tr>
 				<td><b>counter</b></td>
 				<td>count</td>
@@ -156,13 +156,12 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 	<small style="margin-top:4px;display:block;font-size:10px;"><p>Not sure how to work these options into the code? <a style="color:#666;" href="javascript:;" onclick="$('.example').show();">This example</a> might help.</p></small>
 
 	<div class="example" style="display: none;"><br>
-<pre>&lt;script src="https://m0k1.pw/widget/coin.js"&gt;&lt;/script&gt;
+<pre>&lt;script src="https://widget.m0k1.pw/faircoin.js"&gt;&lt;/script&gt;
 &lt;script&gt;
 	CoinWidgetCom.go({
 		wallet_address		: 'fa6q6itqQiEhphss7B56F6UHZzPhG8JBPM',
-
 		counter			: 'amount',
-		lbl_button 		: 'TIP ME',	
+		lbl_button 		: 'TIP ME',
 		lbl_count		: 'payments',
 		lbl_amount 		: 'coins',
 		lbl_address		: 'Please send FairCoin donations to:',
@@ -189,7 +188,7 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
 			<button onclick="window.open('https://wordpress.org/plugins/faircoin-donation-dutton/');" class="grey" style="padding:8px;"><img src="assets/icon_16_download.png">Wordpress FairCoin donation button</button>
 <br> <br>
 <p> Once installed, you only need to paste this code anywhere you want to have the button: </p><br>
-<pre> 
+<pre>
 [coinwidget address="HERE YOUR FAIRCOIN ADDRESS"]
 </pre><br><br>
 <pre><code>[coinwidget
@@ -198,16 +197,16 @@ it yourself.<br> Also we've made available a link to download a <b>wordpress plu
     lbl_button=&quot;Donate FairCoin&quot; lbl_address=&quot;My address&quot; lbl_count=&quot;Number of donations&quot;
     lbl_amount=&quot;FAIR&quot;]</code></pre><br>
 Or simply: <br>
-<pre> 
+<pre>
 <code>[coinwidget address="HERE YOUR FAIRCOIN ADDRESS"]</code>
 </pre><br>
-		
-	
+
+
 	</div>
 </article>
 
 
-	<small id="footer">FairCoin donation button, fork from <a target="_blank" href="http://coinwidget.com">Coinwidget.com</a> by Scotty.cc</small>
+	<small id="footer">FairCoin donation button maintained by <a target="_blank" href="https://m0k1.pw">m0k1</a></small>
 
 
 
@@ -217,11 +216,11 @@ Or simply: <br>
 <div style="display: none;" id="fade"></div>
 <div style="display: none;" id="code">
 	<button style="position:absolute;right:5px;top:5px;font-size:11px;padding:3px 6px;z-index:9;font-weight:bold;" onclick="wizard.code.close();" title="Close Window" class="grey">X</button>
-	
+
 	<div align="center">
 		<h1>Paste the code below into your website to install your widget:</h1>
-	
-		<textarea onclick="this.select();">&lt;script src="https://m0k1.pw/widget/coin.js"&gt;&lt;/script&gt;
+
+		<textarea onclick="this.select();">&lt;script src="https://widget.m0k1.pw/faircoin.js"&gt;&lt;/script&gt;
 &lt;script&gt;
 CoinWidgetCom.go({
 	wallet_address: "ENTER-YOUR-FAIRCOIN-WALLET-ADDRESS"
@@ -235,10 +234,10 @@ CoinWidgetCom.go({
 	, lbl_amount: "FAIR"
 });
 &lt;/script&gt;</textarea>
-		
+
 		<button style="width:150px;text-align:center;" onclick="wizard.code.close_all();">Done, Close Wizard</button>
 		<button style="width:150px;text-align:center;" class="grey" onclick="wizard.code.close();">Go back and Edit</button><br><br>
-		
+
 		<a target="_blank" class="ad" href="http://faircoin.world"><img src="assets/mixfaircoop390x90.png" height="90" width="390"></a>
 	</div>
 </div>
@@ -260,7 +259,7 @@ CoinWidgetCom.go({
 				<li class="" data-page="qrcode">QR Code:<b>On</b></li>
 				<li class="" data-page="autoshow">Auto Show:<b>Off</b></li>
 			</ul>
-			
+
 		</aside>
 		<section class="preview">
 			<div style="top: 50px; left: 50px; right: auto; margin-left: 0px;">
@@ -295,7 +294,7 @@ CoinWidgetCom.go({
 				<button data-sidebar="Amount Received" data-counter="received" class="grey"><img src="assets/icon_16_counter.png">amount received</button>
 				<button data-sidebar="Hidden" data-counter="hide" class="grey"><img src="assets/icon_16_counter.png">hidden</button>
 				<small style="font-size:11px;display:block;margin-top:8px;border-top:1px solid #ddd;padding-top:8px;">Selecting hidden will hide all visible statistics.</small>
-			</div>			
+			</div>
 			<div style="display: none;" data-page="text" class="hide" data-custom="false">
 				<h2>Customize Text</h2>
 				<label>Button Label</label>		<input value="Donate" name="button" type="text" /><br>
@@ -307,7 +306,7 @@ CoinWidgetCom.go({
 			<div data-page="alignment" class="hide">
 				<h2>Window Alignment</h2>
 				<p>How should the window align to the button when opened?</p><br>
-				<div align="center"> 
+				<div align="center">
 					<table id="alignment" border="0" cellpadding="0" cellspacing="1">
 						<tbody><tr>
 							<td data-point="al" class="point"><img src="assets/icon_16_check2.png"></td>
